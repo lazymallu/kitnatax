@@ -28,6 +28,8 @@ jobs:
         run: node test/guide.js
       - name: Refund guide tests
         run: node test/refund-guide.js
+      - name: Guides list and top bar
+        run: node test/guides-index.js
       - name: Page stress test
         run: node test/ui.js
   watch:

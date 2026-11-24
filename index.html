@@ -132,12 +132,14 @@ footer{font-size:15px}
 @media(max-width:900px){.tool{grid-template-columns:minmax(0,1fr)}.readout{position:static;order:-1}.cols{grid-template-columns:minmax(0,1fr);gap:32px}}
 @media(max-width:600px){.grid2{grid-template-columns:minmax(0,1fr)}.panel{padding:16px}.readout{padding-top:26px}table{font-size:14px}th,td{padding:6px 4px}.ruler .tick:nth-of-type(even) i{display:none}}
 @media(prefers-reduced-motion:reduce){.fill,.ruler .you{transition:none}}
+
+.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;max-width:calc(1240px + 2*max(5vw,16px));margin:0 auto;padding:14px max(5vw,16px) 0}.topbar .tb-home{font-family:"Anek Latin",Mukta,sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}.topbar .tb-home span{font-family:Mukta,sans-serif;font-weight:400;font-size:16px;color:var(--mute);margin-left:8px}.topbar .tb-links{display:flex;gap:8px}.topbar .tb-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;font-weight:600;font-size:16px;text-decoration:none;color:var(--ink);border:1.5px solid currentColor}.topbar .tb-links a.tb-guides{background:var(--hl);color:#1b1f3b;border-color:var(--hl)}.topbar .tb-links a[aria-current=page]{box-shadow:inset 0 0 0 1.5px #1b1f3b}.topbar a:focus-visible{outline:3px solid var(--accInk);outline-offset:2px}
 </style>
 </head>
 <body>
+<nav class="topbar" aria-label="Site"><a class="tb-home" href="index.html">KitnaTax <span>kitna tax lagega?</span></a><span class="tb-links"><a aria-current="page" href="index.html">Calculator</a><a class="tb-guides" href="guides/index.html">Guides</a></span></nav>
 <header class="band"><div class="wrap top">
   <div>
-    <p class="brand">KitnaTax <span>kitna tax lagega?</span></p>
     <h1>Salary tax calculator for India, 2026-27</h1>
     <p class="lede">India has two ways to work out salary tax. The <b>new regime</b> has lower rates but lets you subtract almost nothing. The <b>old regime</b> has higher rates but lets you subtract rent, savings and loans. Enter your pay and this page tells you which one costs you less, and whether you get money back. Every rule links to the Income Tax Department's own page.</p>
   </div>
@@ -269,7 +271,7 @@ footer{font-size:15px}
   <p><b>Estimate only.</b> This calculator covers resident individuals with salary income, using the rates and limits named below. It is not tax, legal or financial advice and is not affiliated with the Income Tax Department or the Government of India. Your actual tax can differ because of other income, capital gains, past losses, or how your employer reports your salary. Check the linked official sources and file only on <a href="https://www.incometax.gov.in/iec/foportal/" rel="noopener">incometax.gov.in</a>.</p>
   <p id="fresh">Loading tax rules.</p>
   <p>Nothing you type is sent or stored on a server; it is saved only in this browser so the page remembers it.</p>
-  <p class="foot"><a href="guides/intimation-143-1.html">Guide: the 143(1) email</a> <a href="guides/refund-not-received.html">Guide: refund not received</a> <a href="privacy.html">Privacy</a> <a href="disclaimer.html">Disclaimer</a> <a href="#" data-report>Report an error</a></p>
+  <p class="foot"><a href="guides/index.html">All guides</a> <a href="guides/intimation-143-1.html">Guide: the 143(1) email</a> <a href="guides/refund-not-received.html">Guide: refund not received</a> <a href="privacy.html">Privacy</a> <a href="disclaimer.html">Disclaimer</a> <a href="#" data-report>Report an error</a></p>
 </div></footer>
 
 <script src="assets/site.js"></script>

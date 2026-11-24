@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tax problem guides: KitnaTax</title>
+<meta name="description" content="Plain-English, step-by-step guides to Indian income tax emails and problems: 143(1) intimation, refund not received and more. Every step links to the Income Tax Department's own manuals.">
+<link rel="canonical" href="https://kitnatax.pages.dev/guides/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1b1f3b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KitnaTax">
+<meta property="og:title" content="Tax problem guides in plain English">
+<meta property="og:description" content="Step-by-step fixes for income tax emails and refund problems, with official links.">
+<meta property="og:url" content="https://kitnatax.pages.dev/guides/">
+<meta name="twitter:card" content="summary">
+<link rel="preload" href="../assets/fonts/mukta-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* (guide index) VOICE everyday help for a worried person: calm, exact, short
+   IDEA the letter itself: the guide reads like an annotated copy of the intimation, with a highlighter on what matters
+   PICTURE a drawn intimation summary with its three outcomes marked, then the steps for the one you pick
+   COLOUR same as the calculator: lavender-grey ground, white sheet, indigo ink, one yellow highlighter
+   TYPE Anek Latin for headings and figures, Mukta for text
+   LAYOUT one reading column up to 760px; the case picker and steps stay in that column on every width */
+:root{color-scheme:light dark;--bg:light-dark(#eceef6,#151729);--ink:light-dark(#1b1f3b,#e8e9f4);--panel:light-dark(#ffffff,#1f2238);--line:light-dark(#c9cde0,#373b5c);--mute:light-dark(#4f5476,#a9adc9);--hl:light-dark(#f7c948,#c99a12);--hlInk:#1b1f3b;--accInk:light-dark(#3a43b8,#a9b0ff);--good:light-dark(#1f7a4d,#6fd3a0);--bad:light-dark(#b3261e,#ff8f86)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Mukta,"Anek Latin",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:var(--accInk);text-underline-offset:3px}
+.col{max-width:760px;margin:0 auto;padding:clamp(24px,4vw,48px) max(5vw,16px)}
+.crumb{font-size:15px;margin:0 0 18px}
+h1,h2,h3,.amt{font-family:"Anek Latin",Mukta,"Anek Latin",system-ui,sans-serif}
+h1{font-size:clamp(32px,4.6vw,48px);font-weight:700;font-stretch:88%;line-height:1.04;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+h2{font-size:26px;font-weight:600;font-stretch:90%;line-height:1.15;margin:40px 0 10px;text-wrap:balance}
+h3{font-size:19px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 12px}
+.answer{background:var(--panel);border-radius:6px;padding:18px 20px;border:1px solid var(--line)}
+.answer p:last-child{margin:0}
+mark{background:linear-gradient(transparent 14%,var(--hl) 14%,var(--hl) 88%,transparent 88%);color:var(--hlInk);padding:0 .1em}
+.sheet{background:var(--panel);border-radius:6px;padding:18px 20px;margin:18px 0;border:1px solid var(--line);font-size:15px}
+.sheet .head{display:flex;justify-content:space-between;gap:12px;color:var(--mute);border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+.sheet .row{display:flex;align-items:baseline;gap:8px;padding:5px 0}
+.sheet .row::after{content:"";order:1;flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px)}
+.sheet .row b{order:2;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sheet .row.key{font-weight:600}
+.sheet .row.key b{background:var(--hl);color:var(--hlInk);padding:0 6px;border-radius:3px}
+.sheet .cap{color:var(--mute);font-size:14px;margin:8px 0 0}
+.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 16px}
+.pick button{min-height:56px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;font:500 16px Mukta,"Anek Latin",system-ui,sans-serif;line-height:1.2;padding:6px 10px;cursor:pointer}
+.pick button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:700}
+.pick button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accInk);outline-offset:2px}
+ol.steps{padding-left:24px;margin:8px 0 0}
+ol.steps li{margin-bottom:10px}
+ol.steps li::marker{font-family:"Anek Latin",sans-serif;font-weight:700}
+.path{font-weight:600;white-space:normal}
+.src{font-size:14px}
+.dl{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px}
+.dl label{display:block;font-weight:500;font-size:15px;margin-bottom:4px}
+.dl input{min-height:44px;font:17px Mukta,"Anek Latin",system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid transparent;border-bottom:1.5px solid var(--line);border-radius:4px 4px 0 0;padding:6px 12px}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:12px;margin-top:14px}
+.dates div{font-size:14px;color:var(--mute);line-height:1.35}
+.dates b{display:block;font-family:"Anek Latin",sans-serif;font-size:22px;color:var(--ink);font-weight:600;margin-top:2px}
+.dates b.late{color:var(--bad)}
+.help{border-left:3px solid var(--hl);padding:4px 0 4px 16px}
+ul.src{padding-left:20px}
+footer{background:#1b1f3b;color:#eceef6;font-size:15px}
+footer a{color:#f7c948}
+footer .col{padding-block:28px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 20px}
+.stale{background:var(--hl);color:var(--hlInk);padding:12px max(5vw,16px);font-size:16px;font-weight:500}
+.stale a{color:var(--hlInk)}
+.pick.five{grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr))}
+@media(max-width:600px){.pick{grid-template-columns:minmax(0,1fr)}.pick button{min-height:48px}}
+
+.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;max-width:760px;margin:0 auto;padding:14px max(5vw,16px) 0}.topbar .tb-home{font-family:"Anek Latin",Mukta,sans-serif;font-weight:700;font-size:22px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}.topbar .tb-home span{font-family:Mukta,sans-serif;font-weight:400;font-size:16px;color:var(--mute);margin-left:8px}.topbar .tb-links{display:flex;gap:8px}.topbar .tb-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;font-weight:600;font-size:16px;text-decoration:none;color:var(--ink);border:1.5px solid currentColor}.topbar .tb-links a.tb-guides{background:var(--hl);color:#1b1f3b;border-color:var(--hl)}.topbar .tb-links a[aria-current=page]{box-shadow:inset 0 0 0 1.5px #1b1f3b}.topbar a:focus-visible{outline:3px solid var(--accInk);outline-offset:2px}
+
+.cards{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px}
+.card a.t{font-family:"Anek Latin",Mukta,sans-serif;font-size:21px;font-weight:600;line-height:1.2;text-decoration:none;color:var(--ink)}
+.card a.t:hover{text-decoration:underline}
+.card p{margin:4px 0 0;color:var(--mute);font-size:16px}
+.card .go{display:inline-block;margin-top:8px;font-weight:600}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="Site"><a class="tb-home" href="../index.html">KitnaTax <span>kitna tax lagega?</span></a><span class="tb-links"><a href="../index.html">Calculator</a><a class="tb-guides" aria-current="page" href="index.html">Guides</a></span></nav>
+<main class="col">
+  <h1>Tax problem guides</h1>
+  <p>Got an email from the Income Tax Department, or a refund that hasn't come? Pick your problem. Each guide is plain English, and every step links to the department's own manual.</p>
+
+  <ul class="cards">
+    <li class="card"><a class="t" href="refund-not-received.html">Income tax refund not received?</a><p>Find where your refund is stuck, from not e-verified to failed or adjusted, and the fix for each.</p><a class="go" href="refund-not-received.html" aria-hidden="true" tabindex="-1">Read the guide</a></li>
+    <li class="card"><a class="t" href="intimation-143-1.html">Got an email about section 143(1)?</a><p>What the department's automatic check means, how to open the PDF, and what to do about a refund or tax to pay.</p><a class="go" href="intimation-143-1.html" aria-hidden="true" tabindex="-1">Read the guide</a></li>
+  </ul>
+
+</main>
+<footer><div class="col">
+  <p id="fresh">Loading tax rules.</p>
+  <p><b>Not official advice.</b> These guides explain the department's published steps in plain English. KitnaTax is not affiliated with the Income Tax Department. Always follow the instructions on the portal and in any letter you receive, and file only on <a href="https://www.incometax.gov.in/iec/foportal/" rel="noopener">incometax.gov.in</a>.</p>
+  <p class="foot"><a href="../index.html">Calculator</a> <a href="../privacy.html">Privacy</a> <a href="../disclaimer.html">Disclaimer</a> <a href="#" data-report>Report an error</a></p>
+</div></footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
