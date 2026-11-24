@@ -156,7 +156,7 @@
   },
   "sources": {
     "newSlabs": "https://www.incometaxindia.gov.in/w/section-202-78",
-    "rates": "https://incometaxindia.gov.in/Documents/Left%20Menu/TAX%20RATES_Indvl.htm",
+    "rates": "https://www.incometaxindia.gov.in/w/%E2%80%8Btax-rates-1",
     "rebate": "https://www.incometaxindia.gov.in/w/section-156-88",
     "salary": "https://www.incometaxindia.gov.in/w/section-19-206",
     "act": "https://www.incometaxindia.gov.in/income-tax-act-2025",
@@ -175,7 +175,7 @@
       ]
     },
     {
-      "url": "https://incometaxindia.gov.in/Documents/Left%20Menu/TAX%20RATES_Indvl.htm",
+      "url": "https://www.incometaxindia.gov.in/w/%E2%80%8Btax-rates-1",
       "mustContain": [
         "400001",
         "1200000",
