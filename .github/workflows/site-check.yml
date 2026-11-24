@@ -1,0 +1,40 @@
+# Free on GitHub. Runs every Monday 09:00 IST and on every push.
+# A failed run means something needs a human: open the run to read the summary.
+name: Site check
+on:
+  schedule:
+    - cron: '30 3 * * 1'
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with: { node-version: 22 }
+      - run: npm install --no-save jsdom@24.1.3
+      - name: Worked examples
+        run: node tests.js
+      - name: 20,000 random cases against the independent reference
+        run: cd test && node compare.js 20000
+      - name: Edge, boundary and speed tests
+        run: cd test && node stress.js
+      - name: Guide page tests
+        run: node test/guide.js
+      - name: Page stress test
+        run: node test/ui.js
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with: { node-version: 22 }
+      - name: Official pages, links and rule freshness
+        run: node scripts/watch.mjs

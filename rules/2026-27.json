@@ -1,0 +1,209 @@
+{
+  "year": "2026-27",
+  "label": "Tax year 2026-27 (1 April 2026 to 31 March 2027)",
+  "validFrom": "2026-04-01",
+  "validTo": "2027-03-31",
+  "verified": "2026-11-24",
+  "law": "Income-tax Act, 2025; Finance Act, 2026; Income-tax Rules, 2026",
+  "cess": 0.04,
+  "metros": [
+    "Mumbai",
+    "Delhi",
+    "Kolkata",
+    "Chennai",
+    "Bengaluru",
+    "Hyderabad",
+    "Pune",
+    "Ahmedabad"
+  ],
+  "newRegime": {
+    "sd": 75000,
+    "slabs": [
+      [
+        400000,
+        0
+      ],
+      [
+        800000,
+        0.05
+      ],
+      [
+        1200000,
+        0.1
+      ],
+      [
+        1600000,
+        0.15
+      ],
+      [
+        2000000,
+        0.2
+      ],
+      [
+        2400000,
+        0.25
+      ],
+      [
+        null,
+        0.3
+      ]
+    ],
+    "rebateLimit": 1200000,
+    "rebateMax": 60000,
+    "employerNpsPct": 0.14,
+    "surcharge": [
+      [
+        5000000,
+        0.1
+      ],
+      [
+        10000000,
+        0.15
+      ],
+      [
+        20000000,
+        0.25
+      ]
+    ]
+  },
+  "oldRegime": {
+    "sd": 50000,
+    "slabs": {
+      "below60": [
+        [
+          250000,
+          0
+        ],
+        [
+          500000,
+          0.05
+        ],
+        [
+          1000000,
+          0.2
+        ],
+        [
+          null,
+          0.3
+        ]
+      ],
+      "60to79": [
+        [
+          300000,
+          0
+        ],
+        [
+          500000,
+          0.05
+        ],
+        [
+          1000000,
+          0.2
+        ],
+        [
+          null,
+          0.3
+        ]
+      ],
+      "80plus": [
+        [
+          500000,
+          0
+        ],
+        [
+          1000000,
+          0.2
+        ],
+        [
+          null,
+          0.3
+        ]
+      ]
+    },
+    "rebateLimit": 500000,
+    "rebateMax": 12500,
+    "employerNpsPct": 0.1,
+    "surcharge": [
+      [
+        5000000,
+        0.1
+      ],
+      [
+        10000000,
+        0.15
+      ],
+      [
+        20000000,
+        0.25
+      ],
+      [
+        50000000,
+        0.37
+      ]
+    ],
+    "limits": {
+      "c80": 150000,
+      "ccd1b": 50000,
+      "d80Self": 25000,
+      "d80SelfSenior": 50000,
+      "d80Parents": 25000,
+      "d80ParentsSenior": 50000,
+      "homeLoan": 200000,
+      "tta": 10000,
+      "ttb": 50000,
+      "profTax": 2500
+    }
+  },
+  "sources": {
+    "newSlabs": "https://www.incometaxindia.gov.in/w/section-202-78",
+    "rates": "https://incometaxindia.gov.in/Documents/Left%20Menu/TAX%20RATES_Indvl.htm",
+    "rebate": "https://www.incometaxindia.gov.in/w/section-156-88",
+    "salary": "https://www.incometaxindia.gov.in/w/section-19-206",
+    "act": "https://www.incometaxindia.gov.in/income-tax-act-2025",
+    "deduction80C": "https://www.incometaxindia.gov.in/w/section-123-96",
+    "deduction80D": "https://www.incometaxindia.gov.in/w/section-126-96",
+    "financeBillMemo": "https://www.incometaxindia.gov.in/documents/81799/11848482/memo-2026.pdf/fe530cfa-9c49-fc5c-4bfa-fc96fd5e7b7a?t=1770008674037"
+  },
+  "watch": [
+    {
+      "url": "https://www.incometaxindia.gov.in/w/section-202-78",
+      "mustContain": [
+        "400000",
+        "800001",
+        "1200000",
+        "2400000"
+      ]
+    },
+    {
+      "url": "https://incometaxindia.gov.in/Documents/Left%20Menu/TAX%20RATES_Indvl.htm",
+      "mustContain": [
+        "400001",
+        "1200000",
+        "60000"
+      ],
+      "newYearSignal": [
+        "2027-28",
+        "AY 2028-29"
+      ]
+    },
+    {
+      "url": "https://www.incometaxindia.gov.in/w/section-156-88",
+      "mustContain": [
+        "60000"
+      ]
+    },
+    {
+      "url": "https://www.incometaxindia.gov.in/w/section-123-96",
+      "mustContain": [
+        "150000"
+      ]
+    },
+    {
+      "url": "https://www.incometaxindia.gov.in/w/section-126-96",
+      "mustContain": [
+        "25000",
+        "50000"
+      ]
+    }
+  ]
+}

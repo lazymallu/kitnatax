@@ -1,0 +1,15 @@
+name: Report an error
+description: A wrong number, a broken link, or a step that no longer matches the portal
+title: "Error: "
+body:
+  - type: input
+    id: page
+    attributes: { label: Which page?, placeholder: "e.g. calculator, 143(1) guide" }
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes: { label: What is wrong?, description: "Please do not include your PAN, name or any personal details." }
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes: { label: Official source, if you have one }

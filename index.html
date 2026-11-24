@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KitnaTax: salary tax calculator 2026-27</title>
+<meta name="description" content="Income tax calculator for salaried people in India, tax year 2026-27. Compare old and new regime, find deductions you are missing, check your refund. Every rule linked to the official source.">
+<link rel="canonical" href="https://kitnatax.pages.dev/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1b1f3b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KitnaTax">
+<meta property="og:title" content="Salary tax calculator for India, 2026-27: old vs new regime">
+<meta property="og:description" content="Which regime costs you less, which deductions you are missing, and whether you get a refund. Every rule linked to the official source.">
+<meta property="og:url" content="https://kitnatax.pages.dev/">
+<meta name="twitter:card" content="summary">
+<!-- Google Search Console: paste the verification tag here at launch, e.g. <meta name="google-site-verification" content="..."> -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"KitnaTax","url":"https://kitnatax.pages.dev/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Income tax calculator for salaried people in India: old vs new regime, deductions, refund check."}</script>
+<link rel="preload" href="assets/fonts/mukta-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+/* VOICE work: a money tool for Indian salaried people, exact and calm
+   IDEA a salary slip: the live result is printed as a payslip with a perforated edge, dotted leaders and one highlighter stroke
+   PICTURE the slip comparing both regimes, plus the break-even ruler showing where your deductions sit
+   COLOUR lavender-grey ground (the ₹100 note), white slip, indigo ink, ₹200-note yellow as the single highlighter
+   TYPE Anek Latin (Ek Type, Mumbai) for headings and figures, Mukta (Ek Type) for text
+   LAYOUT laptop: inputs left, slip right and sticky; phone: title, slip, inputs */
+:root{color-scheme:light dark;--bg:light-dark(#eceef6,#151729);--ink:light-dark(#1b1f3b,#e8e9f4);--panel:light-dark(#ffffff,#1f2238);--line:light-dark(#c9cde0,#373b5c);--mute:light-dark(#4f5476,#a9adc9);--hl:light-dark(#f7c948,#c99a12);--hlInk:#1b1f3b;--accInk:light-dark(#3a43b8,#a9b0ff);--quiet:light-dark(#b9bdd6,#4a4f75);--good:light-dark(#1f7a4d,#6fd3a0);--bad:light-dark(#b3261e,#ff8f86)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Mukta,"Anek Latin",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:var(--accInk);text-underline-offset:3px}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+header.band{padding-bottom:0}
+h1,h2,h3,.big,.figs b,.opp .amt,legend{font-family:"Anek Latin",Mukta,"Anek Latin",system-ui,sans-serif}
+.brand{font-family:"Anek Latin",Mukta,sans-serif;font-weight:700;font-size:22px;margin:0 0 14px;letter-spacing:-.01em}
+.brand span{font-family:Mukta,sans-serif;font-weight:400;font-size:16px;color:var(--mute);margin-left:8px}
+h1{font-size:clamp(34px,4.6vw,52px);font-weight:700;font-stretch:88%;line-height:1.02;letter-spacing:-.015em;margin:0 0 10px;text-wrap:balance;max-width:16ch}
+h2{font-size:28px;font-weight:600;font-stretch:90%;line-height:1.1;margin:0 0 12px;text-wrap:balance}
+h3{font-size:18px;font-weight:600;margin:0 0 2px}
+.lede{max-width:60ch;margin:0;color:var(--mute)}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 32px}
+.portal{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:22px;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;font:500 16px Mukta,"Anek Latin",system-ui,sans-serif;background:transparent;cursor:pointer}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.btn.solid:hover{background:color-mix(in srgb,var(--ink) 85%,var(--bg))}
+.btn:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--accInk);outline-offset:2px}
+.tool{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:start}
+.panel{background:var(--panel);border-radius:6px;padding:22px}
+form.panel{border:1px solid var(--line)}
+fieldset{border:0;margin:0 0 18px;padding:0 0 18px;border-bottom:1px solid var(--line)}
+fieldset:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0}
+legend{font-weight:600;font-size:20px;padding:0;margin-bottom:8px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
+label{display:block;font-size:15px;font-weight:500;line-height:1.3}
+.lab{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.lab a{font-size:14px;font-weight:400;white-space:nowrap}
+.field{position:relative;margin-top:4px}
+.field span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--mute)}
+input[type=text],select{width:100%;min-height:44px;font:17px Mukta,"Anek Latin",system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid transparent;border-bottom:1.5px solid var(--quiet);border-radius:4px 4px 0 0;padding:6px 12px;font-variant-numeric:tabular-nums}
+input[type=text]:hover,select:hover{border-bottom-color:var(--ink)}
+.field input{padding-left:28px;text-align:right}
+.hint{font-size:14px;color:var(--mute);margin:4px 0 0;line-height:1.4}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.presets button{min-height:44px;padding:0 16px;border-radius:22px;border:1px solid var(--line);background:transparent;color:var(--ink);font:15px Mukta,"Anek Latin",system-ui,sans-serif;cursor:pointer}
+.presets button:hover{border-color:var(--ink)}
+.check{display:flex;gap:10px;align-items:center;min-height:44px;font-size:15px;font-weight:400}
+.check input{width:20px;height:20px;accent-color:var(--ink)}
+.sample{font-size:14px;color:var(--mute);margin:0 0 14px}
+.readout{position:sticky;top:16px;padding-top:30px;filter:drop-shadow(0 1px 0 var(--line)) drop-shadow(0 10px 24px color-mix(in srgb,var(--ink) 10%,transparent));-webkit-mask:radial-gradient(circle 7px at 9px 0,transparent 6.5px,#000 7px) -9px 0/18px 100% repeat-x;mask:radial-gradient(circle 7px at 9px 0,transparent 6.5px,#000 7px) -9px 0/18px 100% repeat-x}
+.slipHead{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--mute);border-bottom:1.5px dashed var(--line);padding-bottom:10px;margin-bottom:14px}
+.verdict{font-size:16px;color:var(--mute);margin:0}
+.big{font-size:clamp(40px,6vw,68px);font-weight:700;font-stretch:85%;line-height:1;letter-spacing:-.02em;margin:6px 0 8px;white-space:nowrap}
+.big .mark{background:linear-gradient(transparent 12%,var(--hl) 12%,var(--hl) 88%,transparent 88%);color:var(--hlInk);padding:0 .12em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;transform:rotate(-.6deg);display:inline-block}
+.big small{font:500 17px Mukta,"Anek Latin",system-ui,sans-serif;letter-spacing:0;color:var(--mute);margin-left:8px}
+.bars{margin:20px 0 6px;display:grid;gap:14px}
+.bar .row{display:flex;align-items:baseline;gap:8px;font-size:16px;margin-bottom:6px}
+.bar .row span{white-space:nowrap}
+.bar .row::after{content:"";order:1;flex:1;border-bottom:2px dotted var(--quiet);transform:translateY(-4px)}
+.bar b{order:2;white-space:nowrap;font-variant-numeric:tabular-nums;font-size:18px}
+.track{height:14px;background:color-mix(in srgb,var(--line) 50%,transparent);border-radius:7px;overflow:hidden}
+.fill{height:100%;background:var(--quiet);border-radius:7px;transition:width .4s cubic-bezier(.2,.7,.2,1)}
+.bar.win .fill{background:var(--ink)}
+.bar.win .row span::after{content:" lower";font-size:14px;color:var(--good);font-weight:600;margin-left:6px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(9em,1fr));gap:12px;margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--line)}
+.figs div{font-size:14px;color:var(--mute);line-height:1.3}
+.figs b{display:block;font-size:24px;font-weight:600;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;margin-top:2px}
+.figs b.pos{color:var(--good)}
+.figs b.neg{color:var(--bad)}
+.scale{margin-top:20px;padding-top:14px;border-top:1.5px dashed var(--line)}
+.scale p{margin:0 0 34px;font-size:16px}
+.ruler{position:relative;height:44px;margin:0 6px 24px}
+.ruler .base{position:absolute;left:0;right:0;top:20px;height:2px;background:var(--ink)}
+.ruler .tick{position:absolute;top:14px;width:1px;height:14px;background:var(--ink)}
+.ruler .tick i{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-style:normal;font-size:13px;color:var(--mute);white-space:nowrap}
+.ruler .zone{position:absolute;top:10px;height:22px;background:color-mix(in srgb,var(--hl) 45%,transparent)}
+.ruler .you{position:absolute;top:-6px;width:0;height:50px;border-left:3px solid var(--accInk);transition:left .4s cubic-bezier(.2,.7,.2,1)}
+.ruler .you i{position:absolute;top:-22px;left:0;transform:translateX(-50%);font-style:normal;font-size:14px;font-weight:700;color:var(--accInk);white-space:nowrap}
+.ruler .be{position:absolute;top:-26px;font-size:14px;color:var(--mute);white-space:nowrap;transform:translateX(-50%)}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-weight:500;color:var(--mute);font-size:15px}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700;border-top:2px solid var(--ink);border-bottom:0}
+.scroll{overflow-x:auto}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.opps{display:grid;border-top:1px solid var(--line)}
+.opp{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.opp .amt{font-weight:600;font-size:22px;white-space:nowrap;text-align:right}
+.opp p{margin:0;font-size:15px;color:var(--mute)}
+.meter{grid-column:1/-1;height:6px;background:color-mix(in srgb,var(--line) 60%,transparent);border-radius:3px;overflow:hidden;margin-top:4px}
+.meter i{display:block;height:100%;background:var(--ink);border-radius:3px}
+.note{padding:12px 16px;background:color-mix(in srgb,var(--hl) 28%,var(--panel));border-radius:6px;margin:14px 0 16px}
+.links{display:grid;padding:0;margin:0;list-style:none;border-top:1px solid var(--line)}
+.links li{padding:12px 0;border-bottom:1px solid var(--line)}
+.links a{font-weight:600}
+.links p{margin:2px 0 0;font-size:15px;color:var(--mute)}
+ol.steps{padding-left:22px;margin:0}
+ol.steps li{margin-bottom:8px}
+ol.steps li::marker{font-family:"Anek Latin",sans-serif;font-weight:700}
+.dark{background:#1b1f3b;color:#eceef6}
+.dark a{color:#f7c948}
+.dark p{max-width:80ch;font-size:15px;margin:0 0 10px}
+footer{font-size:15px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 20px}
+.stale{background:var(--hl);color:var(--hlInk);padding:12px max(5vw,16px);font-size:16px;font-weight:500}
+.stale a{color:var(--hlInk)}
+.dark .foot a{color:#f7c948}
+@media(max-width:900px){.tool{grid-template-columns:minmax(0,1fr)}.readout{position:static;order:-1}.cols{grid-template-columns:minmax(0,1fr);gap:32px}}
+@media(max-width:600px){.grid2{grid-template-columns:minmax(0,1fr)}.panel{padding:16px}.readout{padding-top:26px}table{font-size:14px}th,td{padding:6px 4px}.ruler .tick:nth-of-type(even) i{display:none}}
+@media(prefers-reduced-motion:reduce){.fill,.ruler .you{transition:none}}
+</style>
+</head>
+<body>
+<header class="band"><div class="wrap top">
+  <div>
+    <p class="brand">KitnaTax <span>kitna tax lagega?</span></p>
+    <h1>Salary tax calculator for India, 2026-27</h1>
+    <p class="lede">India has two ways to work out salary tax. The <b>new regime</b> has lower rates but lets you subtract almost nothing. The <b>old regime</b> has higher rates but lets you subtract rent, savings and loans. Enter your pay and this page tells you which one costs you less, and whether you get money back. Every rule links to the Income Tax Department's own page.</p>
+  </div>
+  <div class="portal">
+    <a class="btn solid" href="https://eportal.incometax.gov.in/iec/foservices/#/login" rel="noopener">File on the official portal</a>
+    <a class="btn" href="https://eportal.incometax.gov.in/iec/foservices/#/TaxCalc/calculator" rel="noopener">Official calculator</a>
+  </div>
+</div></header>
+
+<main>
+<section class="band"><div class="wrap tool">
+  <form class="panel" id="f" autocomplete="off">
+    <p class="sample">Filled with sample figures for a Bengaluru employee. Replace them with yours from your salary slip or Form 16; nothing leaves this page.</p>
+    <fieldset>
+      <legend>Salary</legend>
+      <div class="lab"><label for="gross">Total yearly salary</label><a href="https://www.incometaxindia.gov.in/w/section-19-206" rel="noopener">Official rule</a></div>
+      <div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="gross"></div>
+      <p class="hint">Before tax. Find it in your offer letter or Form 16.</p>
+      <div class="presets" id="presets"></div>
+      <div class="grid2" style="margin-top:12px">
+        <div><label for="basic">Basic pay, yearly</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="basic"></div><p class="hint">Basic + dearness allowance (DA), from your payslip</p></div>
+        <div><label for="age">Your age on 31 March 2027</label><select id="age" style="margin-top:4px"><option value="below60">Below 60</option><option value="60to79">60 to 79</option><option value="80plus">80 or over</option></select></div>
+        <div><label for="employerNps">Pension your employer pays (NPS)</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="employerNps"></div><p class="hint">Leave empty if your employer does not do this</p></div>
+        <div><label for="interest">Interest from your savings account</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="interest"></div><p class="hint">From your bank app or passbook</p></div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Rent <small style="font-weight:400;color:var(--mute)">(counts only in the old regime)</small></legend>
+      <div class="grid2">
+        <div><label for="hraReceived">Rent allowance from employer (HRA)</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="hraReceived"></div><p class="hint">Yearly total, shown on your payslip</p></div>
+        <div><label for="rentPaid">Rent you paid this year</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="rentPaid"></div><p class="hint">Keep rent receipts for your employer</p></div>
+        <div><label for="city">City you live in</label><select id="city" style="margin-top:4px"></select></div>
+        <div><label for="profTax">Professional tax</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="profTax"></div><p class="hint">Small state tax cut from salary, up to ₹2,500</p></div>
+      </div>
+      <p class="hint" id="hraNote"></p>
+    </fieldset>
+    <fieldset>
+      <legend>Savings, insurance and loans <small style="font-weight:400;color:var(--mute)">(count only in the old regime)</small></legend>
+      <div class="grid2">
+        <div><div class="lab"><label for="c80">Tax-saving investments</label></div><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="c80"></div><p class="hint">PF, PPF, ELSS funds, life insurance, children's school fees. Up to ₹1,50,000. Rule: 80C, now section 123</p></div>
+        <div><label for="ownNps">Your own pension savings (NPS)</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="ownNps"></div><p class="hint">Extra ₹50,000 on top of the line before. Rule: 80CCD(1B)</p></div>
+        <div><label for="healthSelf">Health insurance for you and family</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="healthSelf"></div><p class="hint">Premium you paid this year. Rule: 80D</p></div>
+        <div><label for="healthParents">Health insurance for parents</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="healthParents"></div>
+          <label class="check"><input type="checkbox" id="parentsSenior"> Parents are 60 or over</label></div>
+        <div><label for="homeLoan">Home loan interest</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="homeLoan"></div><p class="hint">Interest only, for the home you live in. Up to ₹2,00,000</p></div>
+        <div><label for="eduLoan">Education loan interest</label><div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="eduLoan"></div><p class="hint">Interest on a loan for studies. No limit</p></div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Will you get money back?</legend>
+      <div class="lab"><label for="tds">Tax already cut from your salary (TDS)</label></div>
+      <div class="field"><span>₹</span><input type="text" inputmode="numeric" maxlength="16" id="tds"></div><p class="hint">In Form 16 Part A, or add up "income tax" on your payslips</p>
+    </fieldset>
+    <div style="margin-top:16px"><button type="button" class="btn" id="reset">Reset to sample</button></div>
+  </form>
+
+  <div class="panel readout" role="region" aria-label="Your tax result" aria-live="polite">
+    <div class="slipHead"><span>Your tax for 2026-27</span><span>Estimate</span></div>
+    <p class="verdict" id="vLine"></p>
+    <div class="big" id="vBig"></div>
+    <p class="verdict" id="vSub"></p>
+    <div class="bars" id="bars"></div>
+    <div class="scale">
+      <p id="beLine"></p>
+      <div class="ruler" id="ruler"></div>
+    </div>
+    <div class="figs" id="figs"></div>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap cols">
+  <div>
+    <h2 id="oppTitle">Deductions you have not fully used</h2>
+    <p class="hint" style="margin:-4px 0 14px">How much less tax you would pay in the old regime if you used each one fully.</p>
+    <div class="opps" id="opps"></div>
+  </div>
+  <div>
+    <h2>How each regime gets to your tax</h2>
+    <div class="scroll"><table id="brk"></table></div>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap cols">
+  <div>
+    <h2>Getting your refund</h2>
+    <div id="refundNote"></div>
+    <ol class="steps">
+      <li>Get Form 16 from your employer. On the tax portal, download your AIS (a list of all income and tax on your PAN) and check the tax figures match.</li>
+      <li>If you only have salary, one house and bank interest, use form ITR-1. File by 31 July 2027. Pick the old regime there if it is cheaper for you.</li>
+      <li>Confirm the return within 30 days with an Aadhaar OTP or net banking. Any refund goes to the bank account you have checked (pre-validated) on the portal.</li>
+      <li>Made a mistake? You can file a corrected return until 31 March 2028.</li>
+    </ol>
+  </div>
+  <div>
+    <h2>Check every rule yourself</h2>
+    <ul class="links">
+      <li><a href="https://www.incometaxindia.gov.in/w/section-202-78" rel="noopener">New regime slabs, section 202</a><p>Income-tax Act, 2025, on incometaxindia.gov.in</p></li>
+      <li><a href="https://www.incometaxindia.gov.in/w/section-156-88" rel="noopener">Rebate up to ₹60,000, section 156</a><p>Was section 87A under the 1961 Act</p></li>
+      <li><a href="https://incometaxindia.gov.in/Documents/Left%20Menu/TAX%20RATES_Indvl.htm" rel="noopener">Old regime rates, surcharge, cess</a><p>Department rate table for individuals</p></li>
+      <li><a href="https://www.incometaxindia.gov.in/income-tax-act-2025" rel="noopener">Full text, Income-tax Act 2025</a><p>Deductions now in sections 123 to 153</p></li>
+      <li><a href="https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1#returnsandforms" rel="noopener">Which ITR form applies to you</a><p>Official e-filing help</p></li>
+      <li><a href="https://eportal.incometax.gov.in/iec/foservices/#/TaxCalc/calender" rel="noopener">Tax calendar and due dates</a><p>Official e-filing portal</p></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="band" style="padding-top:0"><div class="wrap">
+  <h2>Old section numbers, new section numbers</h2>
+  <p class="lede" style="margin-bottom:14px">The Income-tax Act, 2025 took effect on 1 April 2026. The limits are the same; the numbers changed.</p>
+  <div class="scroll"><table style="max-width:760px">
+    <thead><tr><th>What it covers</th><th>1961 Act</th><th>2025 Act</th></tr></thead>
+    <tbody>
+      <tr><td>PF, PPF, ELSS, life insurance, tuition</td><td>80C</td><td>123</td></tr>
+      <tr><td>NPS contributions</td><td>80CCD</td><td>124</td></tr>
+      <tr><td>Health insurance</td><td>80D</td><td>126</td></tr>
+      <tr><td>Education loan interest</td><td>80E</td><td>129</td></tr>
+      <tr><td>Donations</td><td>80G</td><td>133</td></tr>
+      <tr><td>Savings and deposit interest</td><td>80TTA / 80TTB</td><td>153</td></tr>
+      <tr><td>Home loan interest</td><td>24(b)</td><td>22</td></tr>
+      <tr><td>Standard deduction, gratuity, leave encashment</td><td>16, 10(10), 10(10AA)</td><td>19</td></tr>
+      <tr><td>Rebate for lower incomes</td><td>87A</td><td>156</td></tr>
+      <tr><td>New tax regime</td><td>115BAC</td><td>202</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+</main>
+
+<footer class="band dark"><div class="wrap">
+  <p><b>Estimate only.</b> This calculator covers resident individuals with salary income, using the rates and limits named below. It is not tax, legal or financial advice and is not affiliated with the Income Tax Department or the Government of India. Your actual tax can differ because of other income, capital gains, past losses, or how your employer reports your salary. Check the linked official sources and file only on <a href="https://www.incometax.gov.in/iec/foportal/" rel="noopener">incometax.gov.in</a>.</p>
+  <p id="fresh">Loading tax rules.</p>
+  <p>Nothing you type is sent or stored on a server; it is saved only in this browser so the page remembers it.</p>
+  <p class="foot"><a href="guides/intimation-143-1.html">Guide: the 143(1) email</a> <a href="privacy.html">Privacy</a> <a href="disclaimer.html">Disclaimer</a> <a href="#" data-report>Report an error</a></p>
+</div></footer>
+
+<script src="assets/site.js"></script>
+<script src="engine.js"></script>
+<script>
+{
+  const E = window.TaxEngine;
+  window.SITE_RULES.then(json => boot(E.addRules(json))).catch(() => { document.getElementById('vLine').textContent = 'Tax rules could not be loaded. Reload the page to try again.'; });
+  function boot(R) {
+  const money = ['gross','basic','employerNps','interest','hraReceived','rentPaid','profTax','c80','ownNps','healthSelf','healthParents','homeLoan','eduLoan','tds'];
+  const SAMPLE = {gross:1500000,basic:600000,employerNps:0,interest:8000,hraReceived:240000,rentPaid:216000,profTax:2400,c80:150000,ownNps:0,healthSelf:15000,healthParents:0,homeLoan:0,eduLoan:0,tds:110000,age:'below60',city:'Bengaluru',parentsSenior:false};
+  const $ = id => document.getElementById(id);
+  const inr = v => (v < -0.5 ? '−₹' + Math.round(-v).toLocaleString('en-IN') : '₹' + (Math.round(v) || 0).toLocaleString('en-IN'));
+  const lakh = v => v >= 100000 ? '₹' + (+(v / 100000).toFixed(2)).toLocaleString('en-IN') + 'L' : inr(v);
+  const parse = s => Number(String(s).replace(/[^0-9.]/g, '')) || 0;
+
+  $('city').innerHTML = R.metros.map(c => `<option>${String(c).replace(/[&<>"']/g, '')}</option>`).join('') + '<option value="other">Any other city</option>';
+  $('presets').innerHTML = [800000, 1200000, 1500000, 2000000, 3000000].map(v => `<button type="button" data-v="${v}">${lakh(v)}</button>`).join('');
+
+  function load(d) {
+    money.forEach(k => { $(k).value = d[k] ? Math.round(d[k]).toLocaleString('en-IN') : ''; });
+    $('age').value = d.age; $('city').value = d.city; $('parentsSenior').checked = !!d.parentsSenior;
+  }
+  function read() {
+    const d = {};
+    money.forEach(k => { d[k] = parse($(k).value); });
+    d.age = $('age').value; d.city = $('city').value; d.parentsSenior = $('parentsSenior').checked;
+    d.metro = d.city !== 'other';
+    return d;
+  }
+
+  function render() {
+    const d = read();
+    try { localStorage.setItem('stx-' + R.year, JSON.stringify(d)); } catch (e) {}
+    const r = E.calculate(d, R.year);
+    const nw = r.newRegime.total, od = r.oldRegime.total, best = r.best;
+    const bestName = best === 'new' ? 'New regime' : 'Old regime';
+    $('vLine').textContent = r.saving === 0 ? 'Both regimes give the same tax' : `${bestName} is lower for you, by ${inr(r.saving)}`;
+    $('vBig').innerHTML = `<span class="mark">${inr(Math.min(nw, od))}</span><small>for the year</small>`;
+    $('vSub').textContent = best === 'new'
+      ? 'The new regime is applied automatically. You do not need to do anything.'
+      : 'Tell your employer you want the old regime, and pick it again when you file your tax return.';
+    if (r.oldRebateCliff && best === 'old') $('vSub').textContent += ` Your old-regime taxable income is just over ₹5,00,000, where the old regime's rebate stops with no relief. Another ${inr(r.oldRegime.taxable - 500000)} of deductions would cut that tax to nil.`;
+    const max = Math.max(nw, od, 1);
+    $('bars').innerHTML = [['New regime', nw, best === 'new'], ['Old regime', od, best === 'old']].map(([n, v, w]) =>
+      `<div class="bar${w && r.saving ? ' win' : ''}"><div class="row"><span>${n}</span><b>${inr(v)}</b></div><div class="track"><div class="fill" style="width:${Math.max(0.5, v / max * 100)}%"></div></div></div>`).join('');
+
+    // Break-even scale
+    const yours = r.oldRegime.lines.filter(l => l[1] < 0 && l[0] !== 'Standard deduction').reduce((s, l) => s - l[1], 0);
+    const be = r.breakEven;
+    const top = Math.max(300000, (be || 0) * 1.35, yours * 1.2);
+    const step = top > 1500000 ? 500000 : top > 800000 ? 200000 : 100000;
+    const scaleMax = Math.ceil(top / step) * step;
+    const pct = v => Math.min(100, v / scaleMax * 100);
+    let ticks = '';
+    for (let v = 0; v <= scaleMax; v += step) ticks += `<span class="tick" style="left:${pct(v)}%"><i>${v ? lakh(v) : '₹0'}</i></span>`;
+    $('beLine').innerHTML = be === 0
+      ? 'The old regime is already as cheap as the new one, even with nothing subtracted.'
+      : be === null ? 'At this income the new regime is cheaper whatever you subtract.'
+      : `The old regime is cheaper only if what you can subtract (rent, savings, insurance, loans) adds up to more than <b>${inr(be)}</b>. Yours adds up to <b>${inr(yours)}</b>.`;
+    $('ruler').innerHTML = `<span class="base"></span>${ticks}` +
+      (be ? `<span class="zone" style="left:${pct(be)}%;right:0"></span><span class="be" style="left:${pct(be)}%">break-even</span>` : '') +
+      `<span class="you" style="left:${pct(yours)}%"><i>you</i></span>`;
+
+    const ref = r.refund;
+    $('figs').innerHTML = `<div>Monthly after tax<b>${inr(r.monthlyTakeHome)}</b></div>` +
+      `<div>Taxable income, ${best} regime<b>${inr(r[best + 'Regime'].taxable)}</b></div>` +
+      (ref === null ? '<div>Refund or balance<b>Enter TDS</b></div>'
+        : `<div>${ref >= 0 ? 'Refund due to you' : 'Still to pay'}<b class="${ref >= 0 ? 'pos' : 'neg'}">${inr(Math.abs(ref))}</b></div>`);
+
+    // Opportunities
+    const opps = r.opportunities.filter(o => o.gap > 0);
+    const oldWinsAnyway = opps.reduce((s, o) => s + o.saves, 0);
+    $('opps').innerHTML = (opps.length ? opps.map(o => `<div class="opp"><div><h3>${o.name}</h3><p>Using ${inr(o.used)} of ${inr(o.limit)}. Section ${o.newSec} of the 2025 Act.</p></div><div class="amt">${o.saves ? 'saves ' + inr(o.saves) : 'saves ₹0'}</div><div class="meter"><i style="width:${o.used / o.limit * 100}%"></i></div></div>`).join('')
+      : '<p class="note">You are using every capped deduction this calculator covers.</p>') +
+      (best === 'new' && od - oldWinsAnyway > nw && opps.length ? `<p class="note">Even with all of these filled, the old regime would cost ${inr(od - oldWinsAnyway - nw)} more than the new one. Invest for its own sake, not for tax.</p>` : '');
+
+    // Breakdown
+    const labels = [...new Set([...r.oldRegime.lines, ...r.newRegime.lines].map(l => l[0]))];
+    const get = (reg, k) => { const l = reg.lines.find(x => x[0] === k); return l ? l[1] : null; };
+    const cell = v => v === null ? '<td class="n">not allowed</td>' : `<td class="n">${v < 0 ? '−' : ''}${inr(Math.abs(v))}</td>`;
+    const rows = labels.filter(k => get(r.oldRegime, k) || get(r.newRegime, k)).map(k => `<tr><td>${k}</td>${cell(get(r.newRegime, k))}${cell(get(r.oldRegime, k))}</tr>`).join('');
+    const tr = (k, f) => `<tr><td>${k}</td><td class="n">${inr(f(r.newRegime))}</td><td class="n">${inr(f(r.oldRegime))}</td></tr>`;
+    $('brk').innerHTML = `<thead><tr><th>Item</th><th class="n">New</th><th class="n">Old</th></tr></thead><tbody>${rows}` +
+      tr('Taxable income', x => x.taxable) + tr('Tax at slab rates', x => x.slab) + tr('Rebate (tax cut for lower incomes)', x => -x.rebate) +
+      tr('Surcharge (extra tax above ₹50 lakh)', x => x.surcharge) + tr('Health and education cess, 4%', x => x.cess) +
+      `<tr class="tot"><td>Tax for the year</td><td class="n">${inr(nw)}</td><td class="n">${inr(od)}</td></tr></tbody>`;
+
+    const hra = r.oldRegime.deductions.hra;
+    $('hraNote').textContent = d.hraReceived && d.rentPaid
+      ? `HRA exempt: ${inr(hra)}, the lowest of HRA received, rent minus 10% of basic, and ${d.metro ? '50' : '40'}% of basic.`
+      : 'Enter HRA and rent to see your exemption. Bengaluru, Hyderabad, Pune and Ahmedabad count at 50% from April 2026.';
+    $('refundNote').innerHTML = ref === null ? '<p class="note">Enter the TDS from Form 16 above to see whether you get money back.</p>'
+      : ref >= 0 ? `<p class="note">Your employer deducted ${inr(d.tds)} but your lowest tax is ${inr(Math.min(nw, od))}. File a return to claim <b>${inr(ref)}</b> back. After filing you will get an email about section 143(1): <a href="guides/intimation-143-1.html">here is what it means</a>.</p>`
+      : `<p class="note">TDS falls short by <b>${inr(-ref)}</b>. Pay it as self-assessment tax before filing, through <a href="https://eportal.incometax.gov.in/iec/foservices/#/tin/pre-login/e-pay-tax-prelogin/user-details" rel="noopener">e-Pay Tax</a>. If a demand arrives after filing, <a href="guides/intimation-143-1.html">this guide explains what to do</a>.</p>`;
+  }
+
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem('stx-' + R.year)); } catch (e) {}
+  load(Object.assign({}, SAMPLE, saved || {}));
+  render();
+
+  $('f').addEventListener('input', render);
+  $('f').addEventListener('change', render);
+  $('f').addEventListener('submit', e => e.preventDefault());
+  $('f').addEventListener('focusout', e => { if (money.includes(e.target.id)) { const v = parse(e.target.value); e.target.value = v ? v.toLocaleString('en-IN') : ''; } });
+  $('presets').addEventListener('click', e => { const v = e.target.dataset.v; if (!v) return; $('gross').value = (+v).toLocaleString('en-IN'); $('basic').value = (v * 0.4).toLocaleString('en-IN'); render(); });
+  $('reset').addEventListener('click', () => { load(SAMPLE); render(); });
+  }
+}
+</script>
+</body>
+</html>

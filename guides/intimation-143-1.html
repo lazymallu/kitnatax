@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intimation under 143(1)</title>
+<meta name="description" content="Got an email about section 143(1) from the Income Tax Department? What it means, how to open the PDF, and what to do if it shows a refund, a demand, or nothing due. Plain English, with official links.">
+<link rel="canonical" href="https://kitnatax.pages.dev/guides/intimation-143-1.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1b1f3b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="KitnaTax">
+<meta property="og:title" content="Got an email about section 143(1)? What it means and what to do">
+<meta property="og:description" content="Plain-English steps for a refund, a demand, or nothing due, with links to the official portal manuals.">
+<meta property="og:url" content="https://kitnatax.pages.dev/guides/intimation-143-1.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an intimation under section 143(1)?", "acceptedAnswer": {"@type": "Answer", "text": "It is the Income Tax Department's automatic check of the return you filed. It shows nothing to pay, a refund, or tax still to pay. It is not a penalty or scrutiny notice."}}, {"@type": "Question", "name": "What is the password for the 143(1) intimation PDF?", "acceptedAnswer": {"@type": "Answer", "text": "Your PAN in small letters followed by your date of birth as DDMMYYYY, with no spaces. For example abcde1234f05031990."}}, {"@type": "Question", "name": "How long do I have to respond to a demand in a 143(1) intimation?", "acceptedAnswer": {"@type": "Answer", "text": "Usually 30 days. Respond on the e-filing portal under Pending Actions, Response to Outstanding Demand."}}]}</script>
+<link rel="preload" href="../assets/fonts/mukta-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* VOICE everyday help for a worried person: calm, exact, short
+   IDEA the letter itself: the guide reads like an annotated copy of the intimation, with a highlighter on what matters
+   PICTURE a drawn intimation summary with its three outcomes marked, then the steps for the one you pick
+   COLOUR same as the calculator: lavender-grey ground, white sheet, indigo ink, one yellow highlighter
+   TYPE Anek Latin for headings and figures, Mukta for text
+   LAYOUT one reading column up to 760px; the case picker and steps stay in that column on every width */
+:root{color-scheme:light dark;--bg:light-dark(#eceef6,#151729);--ink:light-dark(#1b1f3b,#e8e9f4);--panel:light-dark(#ffffff,#1f2238);--line:light-dark(#c9cde0,#373b5c);--mute:light-dark(#4f5476,#a9adc9);--hl:light-dark(#f7c948,#c99a12);--hlInk:#1b1f3b;--accInk:light-dark(#3a43b8,#a9b0ff);--good:light-dark(#1f7a4d,#6fd3a0);--bad:light-dark(#b3261e,#ff8f86)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Mukta,"Anek Latin",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:var(--accInk);text-underline-offset:3px}
+.col{max-width:760px;margin:0 auto;padding:clamp(24px,4vw,48px) max(5vw,16px)}
+nav{font-size:15px;margin-bottom:18px}
+h1,h2,h3,.amt{font-family:"Anek Latin",Mukta,"Anek Latin",system-ui,sans-serif}
+h1{font-size:clamp(32px,4.6vw,48px);font-weight:700;font-stretch:88%;line-height:1.04;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+h2{font-size:26px;font-weight:600;font-stretch:90%;line-height:1.15;margin:40px 0 10px;text-wrap:balance}
+h3{font-size:19px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 12px}
+.answer{background:var(--panel);border-radius:6px;padding:18px 20px;border:1px solid var(--line)}
+.answer p:last-child{margin:0}
+mark{background:linear-gradient(transparent 14%,var(--hl) 14%,var(--hl) 88%,transparent 88%);color:var(--hlInk);padding:0 .1em}
+.sheet{background:var(--panel);border-radius:6px;padding:18px 20px;margin:18px 0;border:1px solid var(--line);font-size:15px}
+.sheet .head{display:flex;justify-content:space-between;gap:12px;color:var(--mute);border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+.sheet .row{display:flex;align-items:baseline;gap:8px;padding:5px 0}
+.sheet .row::after{content:"";order:1;flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px)}
+.sheet .row b{order:2;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sheet .row.key{font-weight:600}
+.sheet .row.key b{background:var(--hl);color:var(--hlInk);padding:0 6px;border-radius:3px}
+.sheet .cap{color:var(--mute);font-size:14px;margin:8px 0 0}
+.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 16px}
+.pick button{min-height:56px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;font:500 16px Mukta,"Anek Latin",system-ui,sans-serif;line-height:1.2;padding:6px 10px;cursor:pointer}
+.pick button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:700}
+.pick button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accInk);outline-offset:2px}
+ol.steps{padding-left:24px;margin:8px 0 0}
+ol.steps li{margin-bottom:10px}
+ol.steps li::marker{font-family:"Anek Latin",sans-serif;font-weight:700}
+.path{font-weight:600;white-space:normal}
+.src{font-size:14px}
+.dl{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px}
+.dl label{display:block;font-weight:500;font-size:15px;margin-bottom:4px}
+.dl input{min-height:44px;font:17px Mukta,"Anek Latin",system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid transparent;border-bottom:1.5px solid var(--line);border-radius:4px 4px 0 0;padding:6px 12px}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:12px;margin-top:14px}
+.dates div{font-size:14px;color:var(--mute);line-height:1.35}
+.dates b{display:block;font-family:"Anek Latin",sans-serif;font-size:22px;color:var(--ink);font-weight:600;margin-top:2px}
+.dates b.late{color:var(--bad)}
+.help{border-left:3px solid var(--hl);padding:4px 0 4px 16px}
+ul.src{padding-left:20px}
+footer{background:#1b1f3b;color:#eceef6;font-size:15px}
+footer a{color:#f7c948}
+footer .col{padding-block:28px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 20px}
+.stale{background:var(--hl);color:var(--hlInk);padding:12px max(5vw,16px);font-size:16px;font-weight:500}
+.stale a{color:var(--hlInk)}
+@media(max-width:600px){.pick{grid-template-columns:minmax(0,1fr)}.pick button{min-height:48px}}
+</style>
+</head>
+<body>
+<main class="col">
+  <nav><a href="../index.html">KitnaTax calculator</a> · Guides</nav>
+  <h1>Got an email about section 143(1)? Here is what it means</h1>
+  <div class="answer">
+    <p><b>Short answer:</b> it is not a penalty or a scrutiny notice. It is the department's automatic check of the tax return you filed, and almost everyone who files gets one.</p>
+    <p>It ends one of three ways: <mark>nothing to pay</mark>, <mark>a refund coming to you</mark>, or <mark>tax still to pay</mark>. Only the last needs action, usually <b>within 30 days</b>.</p>
+  </div>
+
+  <h2>How to open it</h2>
+  <p>The email comes from the Centralised Processing Centre (CPC) in Bengaluru with a locked PDF. The password is your <b>PAN in small letters</b> followed by your <b>date of birth as DDMMYYYY</b>, with no spaces.</p>
+  <p>Example: PAN ABCDE1234F, born 5 March 1990, gives <b>abcde1234f05031990</b>.</p>
+  <p class="src">Lost the email? Log in to the portal and open <span class="path">e-File, Income Tax Returns, View Filed Returns</span>, then pick the year. (<a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">official manual</a>)</p>
+
+  <h2>What to look at</h2>
+  <p>The PDF has a table with two columns: what <i>you</i> said in your return, and what the department <i>worked out</i>. Ignore everything except the last line.</p>
+  <div class="sheet" aria-label="Example of the last lines of an intimation">
+    <div class="head"><span>Example intimation, last lines</span><span>Sample figures</span></div>
+    <div class="row"><span>Tax payable on total income</span><b>₹98,750</b></div>
+    <div class="row"><span>Taxes paid (TDS and others)</span><b>₹1,10,000</b></div>
+    <div class="row key"><span>Refund due</span><b>₹11,250</b></div>
+    <p class="cap">If both columns match, the department agrees with you. If they differ, the line that differs tells you why.</p>
+  </div>
+
+  <h2>What to do, by result</h2>
+  <p>Pick what your intimation shows:</p>
+  <div class="pick" role="group" aria-label="Your result">
+    <button type="button" data-case="nil" aria-pressed="false">Nothing to pay, no refund</button>
+    <button type="button" data-case="refund" aria-pressed="true">A refund</button>
+    <button type="button" data-case="demand" aria-pressed="false">Tax still to pay</button>
+  </div>
+
+  <section data-show="nil" hidden>
+    <h3>You are done</h3>
+    <p>Your return has been accepted as filed. Save the PDF with your Form 16 for at least 6 years. No reply is needed.</p>
+  </section>
+
+  <section data-show="refund">
+    <h3>Your refund is on its way</h3>
+    <ol class="steps">
+      <li>Check the refund goes to a <b>pre-validated</b> bank account (one the portal has checked against your PAN). You can see and add accounts in your profile on the portal.</li>
+      <li>Track it at <span class="path">e-File, Income Tax Returns, View Filed Returns, View Details</span>. (<a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">official manual</a>)</li>
+      <li>If the status says the refund <b>failed</b> (often a closed account or a name mismatch), go to <span class="path">Services, Refund Reissue, Create Refund Reissue Request</span>, choose a validated account and e-verify. (<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/refund-reissue-UM" rel="noopener">official manual</a>)</li>
+      <li>If the refund is smaller than you expected, compare the two columns. A smaller refund usually means some TDS was not matched. See "If you think it is wrong" below.</li>
+    </ol>
+  </section>
+
+  <section data-show="demand" hidden>
+    <h3>Respond before the deadline</h3>
+    <ol class="steps">
+      <li>Find the line where the two columns differ. Common causes: TDS your employer deducted but did not report, interest income you left out, or a deduction claimed without proof.</li>
+      <li>Log in and open <span class="path">Pending Actions, Response to Outstanding Demand</span>, then <b>Submit Response</b>. (<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/response-outstanding-demand-UM" rel="noopener">official manual</a>)</li>
+      <li>Choose one:
+        <br><b>Demand is correct:</b> pay it through Pay Now. Once you say it is correct, you cannot dispute it later.
+        <br><b>Disagree, fully or partly:</b> pick the reasons and add details. Pay any part you agree with.</li>
+      <li>If you disagree because the department missed something in your return, also file a <b>rectification</b> (below). If the mistake was yours, a <b>revised return</b> is the fix, if the deadline for one has not passed.</li>
+      <li>Do not ignore it. An unpaid demand can be taken out of a future refund.</li>
+    </ol>
+  </section>
+
+  <h2>Your deadlines</h2>
+  <div class="dl">
+    <label for="d">Date on your intimation</label>
+    <input type="date" id="d">
+    <div class="dates" id="dates" aria-live="polite"></div>
+  </div>
+  <p class="src" style="margin-top:8px">30 days is the usual window to respond to a demand. Rectification with CPC is open for 4 years from the end of the financial year in which the intimation was issued. (<a href="https://www.incometax.gov.in/iec/foportal/help/perform-rectification-faq" rel="noopener">official FAQ</a>)</p>
+
+  <h2>If you think it is wrong</h2>
+  <p><b>Rectification</b> is a request to correct a mistake the department made while processing, such as missing TDS that appears in your Form 26AS. It is not for changing your income or adding a new claim.</p>
+  <ol class="steps">
+    <li>Log in and open <span class="path">Services, Rectification, New Request</span>. Pick the assessment year. (<a href="https://www.incometax.gov.in/iec/foportal/help/how-to-perform-rectification" rel="noopener">official manual</a>)</li>
+    <li>Choose the type: <b>Reprocess the return</b> to have it checked again, <b>Tax credit mismatch correction</b> if TDS was missed, or <b>Return data correction</b> to fix figures.</li>
+    <li>Submit and e-verify. You get a 15-digit reference number. Track it under Rectification Status.</li>
+    <li>Only one request per year can be open at a time, and it cannot be edited once sent.</li>
+  </ol>
+
+  <h2>When to get help</h2>
+  <p class="help">Get a chartered accountant or a filing service if the demand is large for you, if you do not understand which line differs, or if a second notice arrives with a different section number such as 142(1) or 148. Those are not automatic checks.</p>
+
+  <h2>Official sources</h2>
+  <ul class="src">
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/response-outstanding-demand-UM" rel="noopener">Respond to Outstanding Demand, user manual</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/how-to-perform-rectification" rel="noopener">Raise Rectification Request, user manual</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/perform-rectification-faq" rel="noopener">Rectification FAQs</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">Refund status, user manual</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/refund-reissue-UM" rel="noopener">Refund reissue, user manual</a></li>
+    <li><a href="https://eportal.incometax.gov.in/iec/foservices/#/login" rel="noopener">Log in to the e-filing portal</a></li>
+  </ul>
+  <p class="src">Last checked 24 November 2026. This guide covers returns for years before April 2026, which still use the Income-tax Act, 1961 section numbers shown on the letter.</p>
+</main>
+<footer><div class="col">
+  <p id="fresh">Loading tax rules.</p>
+  <p><b>Not official advice.</b> This guide explains the department's published steps in plain English. It is not affiliated with the Income Tax Department. Always follow the instructions in your own intimation, and file only on <a href="https://www.incometax.gov.in/iec/foportal/" rel="noopener">incometax.gov.in</a>.</p>
+  <p class="foot"><a href="../index.html">Calculator</a> <a href="../privacy.html">Privacy</a> <a href="../disclaimer.html">Disclaimer</a> <a href="#" data-report>Report an error</a></p>
+</div></footer>
+<script src="../assets/site.js"></script>
+<script>
+{
+  const btns = [...document.querySelectorAll('.pick button')];
+  const secs = [...document.querySelectorAll('[data-show]')];
+  const show = c => {
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.case === c)));
+    secs.forEach(s => { s.hidden = s.dataset.show !== c; });
+  };
+  btns.forEach(b => b.addEventListener('click', () => show(b.dataset.case)));
+
+  const fmt = d => d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  // Deadlines from the intimation date: 30 days to respond; rectification until 31 March, 4 years after the issuing financial year ends.
+  function deadlines(iso, today) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return null;
+    const d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (isNaN(d) || d.getMonth() !== +m[2] - 1) return null;
+    const respond = new Date(d); respond.setDate(respond.getDate() + 30);
+    const fyEnd = d.getMonth() >= 3 ? d.getFullYear() + 1 : d.getFullYear();
+    const rectify = new Date(fyEnd + 4, 2, 31);
+    const days = Math.ceil((respond - today) / 864e5);
+    return { respond, rectify, days, future: d > today };
+  }
+  const inp = document.getElementById('d'), out = document.getElementById('dates');
+  function render() {
+    const r = deadlines(inp.value, new Date(new Date().toDateString()));
+    if (!r) { out.innerHTML = '<div>Enter the date printed on your intimation to see your deadlines.</div>'; return; }
+    if (r.future) { out.innerHTML = '<div>That date is in the future. Check the date printed at the top of the intimation.</div>'; return; }
+    const left = r.days > 0 ? `${r.days} day${r.days === 1 ? '' : 's'} left` : r.days === 0 ? 'Today is the last day' : 'This date has passed: respond now anyway';
+    out.innerHTML = `<div>Respond to a demand by<b class="${r.days < 0 ? 'late' : ''}">${fmt(r.respond)}</b>${left}</div><div>Rectification open until<b>${fmt(r.rectify)}</b>Online, with CPC</div>`;
+  }
+  inp.addEventListener('input', render);
+  render();
+  window.__deadlines = deadlines;
+}
+</script>
+</body>
+</html>
