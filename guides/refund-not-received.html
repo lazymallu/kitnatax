@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Income tax refund not received: find where it is stuck</title>
+<meta name="description" content="Income tax refund not received or failed? Read your status on the e-filing portal, then follow the fix for not e-verified, not processed, failed, issued but missing, or adjusted. Plain English, with official links.">
+<link rel="canonical" href="https://kitnatax.pages.dev/guides/refund-not-received.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1b1f3b">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="KitnaTax">
+<meta property="og:title" content="Income tax refund not received? Find where it is stuck">
+<meta property="og:description" content="Five reasons a refund doesn't arrive, and the official fix for each.">
+<meta property="og:url" content="https://kitnatax.pages.dev/guides/refund-not-received.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why has my income tax refund not come yet?", "acceptedAnswer": {"@type": "Answer", "text": "Usually one of five reasons: the return was never e-verified, it has not been processed yet, the bank account is not pre-validated, the refund failed (closed account, name mismatch, wrong IFSC or PAN not linked to Aadhaar), or it was adjusted against an old demand. The refund status on the e-filing portal tells you which."}}, {"@type": "Question", "name": "How do I get a failed income tax refund sent again?", "acceptedAnswer": {"@type": "Answer", "text": "Pre-validate a working bank account on the e-filing portal, then go to Services, Refund Reissue, Create Refund Reissue Request, pick that account and e-verify."}}, {"@type": "Question", "name": "How long can the department take to process my return?", "acceptedAnswer": {"@type": "Answer", "text": "An intimation under section 143(1) must be sent within 9 months from the end of the financial year in which the return was filed. A return filed in August 2025 must be processed by 31 December 2026."}}]}</script>
+<link rel="preload" href="../assets/fonts/mukta-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* VOICE everyday help for a worried person: calm, exact, short
+   IDEA the letter itself: the guide reads like an annotated copy of the intimation, with a highlighter on what matters
+   PICTURE a drawn intimation summary with its three outcomes marked, then the steps for the one you pick
+   COLOUR same as the calculator: lavender-grey ground, white sheet, indigo ink, one yellow highlighter
+   TYPE Anek Latin for headings and figures, Mukta for text
+   LAYOUT one reading column up to 760px; the case picker and steps stay in that column on every width */
+:root{color-scheme:light dark;--bg:light-dark(#eceef6,#151729);--ink:light-dark(#1b1f3b,#e8e9f4);--panel:light-dark(#ffffff,#1f2238);--line:light-dark(#c9cde0,#373b5c);--mute:light-dark(#4f5476,#a9adc9);--hl:light-dark(#f7c948,#c99a12);--hlInk:#1b1f3b;--accInk:light-dark(#3a43b8,#a9b0ff);--good:light-dark(#1f7a4d,#6fd3a0);--bad:light-dark(#b3261e,#ff8f86)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Mukta,"Anek Latin",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:var(--accInk);text-underline-offset:3px}
+.col{max-width:760px;margin:0 auto;padding:clamp(24px,4vw,48px) max(5vw,16px)}
+nav{font-size:15px;margin-bottom:18px}
+h1,h2,h3,.amt{font-family:"Anek Latin",Mukta,"Anek Latin",system-ui,sans-serif}
+h1{font-size:clamp(32px,4.6vw,48px);font-weight:700;font-stretch:88%;line-height:1.04;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+h2{font-size:26px;font-weight:600;font-stretch:90%;line-height:1.15;margin:40px 0 10px;text-wrap:balance}
+h3{font-size:19px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 12px}
+.answer{background:var(--panel);border-radius:6px;padding:18px 20px;border:1px solid var(--line)}
+.answer p:last-child{margin:0}
+mark{background:linear-gradient(transparent 14%,var(--hl) 14%,var(--hl) 88%,transparent 88%);color:var(--hlInk);padding:0 .1em}
+.sheet{background:var(--panel);border-radius:6px;padding:18px 20px;margin:18px 0;border:1px solid var(--line);font-size:15px}
+.sheet .head{display:flex;justify-content:space-between;gap:12px;color:var(--mute);border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+.sheet .row{display:flex;align-items:baseline;gap:8px;padding:5px 0}
+.sheet .row::after{content:"";order:1;flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px)}
+.sheet .row b{order:2;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sheet .row.key{font-weight:600}
+.sheet .row.key b{background:var(--hl);color:var(--hlInk);padding:0 6px;border-radius:3px}
+.sheet .cap{color:var(--mute);font-size:14px;margin:8px 0 0}
+.pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 16px}
+.pick button{min-height:56px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;font:500 16px Mukta,"Anek Latin",system-ui,sans-serif;line-height:1.2;padding:6px 10px;cursor:pointer}
+.pick button[aria-pressed=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:700}
+.pick button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accInk);outline-offset:2px}
+ol.steps{padding-left:24px;margin:8px 0 0}
+ol.steps li{margin-bottom:10px}
+ol.steps li::marker{font-family:"Anek Latin",sans-serif;font-weight:700}
+.path{font-weight:600;white-space:normal}
+.src{font-size:14px}
+.dl{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px}
+.dl label{display:block;font-weight:500;font-size:15px;margin-bottom:4px}
+.dl input{min-height:44px;font:17px Mukta,"Anek Latin",system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid transparent;border-bottom:1.5px solid var(--line);border-radius:4px 4px 0 0;padding:6px 12px}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:12px;margin-top:14px}
+.dates div{font-size:14px;color:var(--mute);line-height:1.35}
+.dates b{display:block;font-family:"Anek Latin",sans-serif;font-size:22px;color:var(--ink);font-weight:600;margin-top:2px}
+.dates b.late{color:var(--bad)}
+.help{border-left:3px solid var(--hl);padding:4px 0 4px 16px}
+ul.src{padding-left:20px}
+footer{background:#1b1f3b;color:#eceef6;font-size:15px}
+footer a{color:#f7c948}
+footer .col{padding-block:28px}
+.foot{display:flex;flex-wrap:wrap;gap:8px 20px}
+.stale{background:var(--hl);color:var(--hlInk);padding:12px max(5vw,16px);font-size:16px;font-weight:500}
+.stale a{color:var(--hlInk)}
+.pick.five{grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr))}
+@media(max-width:600px){.pick{grid-template-columns:minmax(0,1fr)}.pick button{min-height:48px}}
+</style>
+</head>
+<body>
+<main class="col">
+  <nav><a href="../index.html">KitnaTax calculator</a> · Guides</nav>
+  <h1>Income tax refund not received? Find where it is stuck</h1>
+  <div class="answer">
+    <p><b>Short answer:</b> log in to the e-filing portal and read the status of your return. It tells you which of five things has happened, and each has its own fix.</p>
+    <p>Most refunds that never arrive have <mark>a bank account problem</mark> or <mark>a return that was never e-verified</mark>. Both take a few minutes to fix online.</p>
+  </div>
+
+  <h2>Step 1: read your status</h2>
+  <p>Log in and open <span class="path">e-File, Income Tax Returns, View Filed Returns</span>, pick the year, then <b>View Details</b>. (<a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">official manual</a>)</p>
+  <p class="src">Can't log in? On the portal home page, <span class="path">Income Tax Return (ITR) Status</span> shows the status with just your acknowledgement number and a mobile OTP. (<a href="https://www.incometax.gov.in/iec/foportal/help/how-to-know-the-itr-status" rel="noopener">official manual</a>)</p>
+
+  <h2>Step 2: pick what it says</h2>
+  <div class="pick five" role="group" aria-label="What your status says">
+    <button type="button" data-case="verify" aria-pressed="false">Pending e-verification</button>
+    <button type="button" data-case="wait" aria-pressed="true">Verified, not processed yet</button>
+    <button type="button" data-case="issued" aria-pressed="false">Refund issued, not in my bank</button>
+    <button type="button" data-case="failed" aria-pressed="false">Refund failed</button>
+    <button type="button" data-case="adjusted" aria-pressed="false">Adjusted, or smaller than expected</button>
+  </div>
+
+  <section data-show="verify" hidden>
+    <h3>Your return is not finished until you e-verify it</h3>
+    <ol class="steps">
+      <li>Nothing is processed and no refund is paid until the return is e-verified. You have <b>30 days from filing</b>.</li>
+      <li>Log in, open <span class="path">e-File, Income Tax Returns, e-Verify Return</span> and use an Aadhaar OTP or net banking. (<a href="https://www.incometax.gov.in/iec/foportal/help/how-to-e-verify-your-e-filing-return" rel="noopener">official manual</a>)</li>
+      <li>If you are past 30 days, e-verify anyway; the portal asks for a reason for the delay. The day you verify counts as the day you filed, so <b>late filing rules can apply</b>. A return never verified is treated as invalid. (<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/itr-v-faqs30-days-timeline-e-verification-returns" rel="noopener">official FAQ</a>)</li>
+    </ol>
+  </section>
+
+  <section data-show="wait">
+    <h3>The department still has time</h3>
+    <ol class="steps">
+      <li>Processing is automatic and often quicker, but the law allows up to <b>9 months after the end of the financial year</b> you filed in. Use the date box below to see your last date. (<a href="https://www.incometaxindia.gov.in/w/time-limit-for-issuing-different-income-tax-notices-and-completion-of-the-assessment%E2%80%8B" rel="noopener">official table</a>)</li>
+      <li>Meanwhile, make sure a bank account is <b>pre-validated</b>. Open <span class="path">My Profile, My Bank Account</span>. Only a validated account can receive a refund, and validation takes 10 to 12 working days. (<a href="https://www.incometax.gov.in/iec/foportal/help/my-bank-account-faq" rel="noopener">official FAQ</a>)</li>
+      <li>Check your PAN is linked to Aadhaar. A refund to an inoperative PAN fails. (<a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">official manual</a>)</li>
+      <li>Watch your email for a notice asking for something, such as a defective return notice. A notice you don't answer can hold up the refund.</li>
+    </ol>
+  </section>
+
+  <section data-show="issued" hidden>
+    <h3>Check the account it went to</h3>
+    <ol class="steps">
+      <li><b>View Details</b> shows that the refund was issued. Allow a few working days for the bank to credit it.</li>
+      <li>Check which account was nominated in <span class="path">My Profile, My Bank Account</span>. It may be an old account you no longer watch.</li>
+      <li>If it still has not arrived, raise a grievance (below) with the date and amount from View Details. Do not file a new return.</li>
+    </ol>
+  </section>
+
+  <section data-show="failed" hidden>
+    <h3>Fix the account, then ask for it again</h3>
+    <ol class="steps">
+      <li>Usual causes: a <b>closed account</b>, the <b>name on the account not matching your PAN</b>, a <b>wrong IFSC</b>, an account <b>not pre-validated</b>, or a <b>PAN not linked to Aadhaar</b>. (<a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">official manual</a>)</li>
+      <li>Add or re-validate a savings or current account under <span class="path">My Profile, My Bank Account</span> and wait until it shows as validated. (<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/my-bank-account/bank-account-UM" rel="noopener">official manual</a>)</li>
+      <li>Open <span class="path">Services, Refund Reissue, Create Refund Reissue Request</span>, choose the validated account and e-verify. Save the transaction ID. (<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/refund-reissue-UM" rel="noopener">official manual</a>)</li>
+    </ol>
+  </section>
+
+  <section data-show="adjusted" hidden>
+    <h3>An old demand took some or all of it</h3>
+    <ol class="steps">
+      <li>If you owe tax for an earlier year, the department can set your refund against it. The status shows <b>partially adjusted</b> or <b>full refund adjusted</b>. (<a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">official manual</a>)</li>
+      <li>Open <span class="path">Pending Actions, Response to Outstanding Demand</span> to see which year and how much. (<a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/response-outstanding-demand-UM" rel="noopener">official manual</a>)</li>
+      <li>If you disagree, submit a response there. A demand you do not answer is confirmed and taken from your refund. (<a href="https://www.incometax.gov.in/iec/foportal/help/respond-to-outstanding-demand-faq" rel="noopener">official FAQ</a>)</li>
+      <li>If the refund is smaller because some TDS was not counted, see our guide to the <a href="intimation-143-1.html">143(1) email</a> for rectification.</li>
+    </ol>
+  </section>
+
+  <h2>How long the department has</h2>
+  <div class="dl">
+    <label for="d">Date you filed your return</label>
+    <input type="date" id="d">
+    <div class="dates" id="dates" aria-live="polite"></div>
+  </div>
+  <p class="src" style="margin-top:8px">If you e-verified more than 30 days after filing, enter the date you e-verified instead. The 9-month rule comes from the department's table of time limits. (<a href="https://www.incometaxindia.gov.in/w/time-limit-for-issuing-different-income-tax-notices-and-completion-of-the-assessment%E2%80%8B" rel="noopener">official table</a>)</p>
+
+  <h2>Interest on a late refund</h2>
+  <p>You do not have to ask for it. For returns under the 1961 Act, the department adds simple interest of about <b>0.5% a month</b>, usually counted from 1 April after the year ends if you filed on time. No interest is paid if the refund is less than 10% of your tax. The interest is taxable in the year you get it.</p>
+
+  <h2>Still stuck? Raise a grievance</h2>
+  <ol class="steps">
+    <li>Log in and open <span class="path">Grievances, Submit Grievance</span>. (<a href="https://www.incometax.gov.in/iec/foportal/help/how-to-raise-grievances-UM" rel="noopener">official manual</a>)</li>
+    <li>Pick the department <b>CPC-ITR</b> and the category <b>Refund</b>. Choose the Income-tax Act, 1961 for income earned before April 2026, even if you filed later.</li>
+    <li>Write at least 100 characters: the year, the amount, what the status says and what you have already tried. Note the acknowledgement number.</li>
+  </ol>
+
+  <h2>When to get help</h2>
+  <p class="help">Get a chartered accountant or a filing service if the refund was adjusted against a demand you do not recognise, if a grievance gets no useful answer in about a month, or if a notice arrives under 142(1), 143(2) or 148. Those are not automatic checks.</p>
+
+  <h2>Official sources</h2>
+  <ul class="src">
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/refund_status_user_manual" rel="noopener">Refund status, user manual</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/my-bank-account-faq" rel="noopener">My Bank Account FAQs (pre-validation)</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/refund-reissue-UM" rel="noopener">Refund reissue, user manual</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/all-topics/e-filing-services/itr-v-faqs30-days-timeline-e-verification-returns" rel="noopener">30-day e-verification timeline, FAQ</a></li>
+    <li><a href="https://www.incometax.gov.in/iec/foportal/help/how-to-raise-grievances-UM" rel="noopener">Submit grievances, user manual</a></li>
+    <li><a href="https://www.incometaxindia.gov.in/w/time-limit-for-issuing-different-income-tax-notices-and-completion-of-the-assessment%E2%80%8B" rel="noopener">Time limits for notices and assessments</a></li>
+    <li><a href="https://eportal.incometax.gov.in/iec/foservices/#/login" rel="noopener">Log in to the e-filing portal</a></li>
+  </ul>
+  <p class="src">Last checked 24 November 2026. This guide covers returns for years before April 2026, filed under the Income-tax Act, 1961.</p>
+</main>
+<footer><div class="col">
+  <p id="fresh">Loading tax rules.</p>
+  <p><b>Not official advice.</b> This guide explains the department's published steps in plain English. It is not affiliated with the Income Tax Department. Always follow the instructions on the portal and in any letter you receive, and file only on <a href="https://www.incometax.gov.in/iec/foportal/" rel="noopener">incometax.gov.in</a>.</p>
+  <p class="foot"><a href="../index.html">Calculator</a> <a href="../privacy.html">Privacy</a> <a href="../disclaimer.html">Disclaimer</a> <a href="#" data-report>Report an error</a></p>
+</div></footer>
+<script src="../assets/site.js"></script>
+<script>
+{
+  const btns = [...document.querySelectorAll('.pick button')];
+  const secs = [...document.querySelectorAll('[data-show]')];
+  const show = c => {
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.case === c)));
+    secs.forEach(s => { s.hidden = s.dataset.show !== c; });
+  };
+  btns.forEach(b => b.addEventListener('click', () => show(b.dataset.case)));
+
+  const fmt = d => d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  // From the filing date: e-verify within 30 days; a 143(1) intimation is due within 9 months of the end of the financial year of filing, so by 31 December.
+  function limits(iso, today) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return null;
+    const d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (isNaN(d) || d.getMonth() !== +m[2] - 1) return null;
+    const verify = new Date(d); verify.setDate(verify.getDate() + 30);
+    const fyEnd = d.getMonth() >= 3 ? d.getFullYear() + 1 : d.getFullYear();
+    const process = new Date(fyEnd, 11, 31);
+    const days = Math.ceil((process - today) / 864e5);
+    return { verify, process, days, future: d > today };
+  }
+  const inp = document.getElementById('d'), out = document.getElementById('dates');
+  function render() {
+    const r = limits(inp.value, new Date(new Date().toDateString()));
+    if (!r) { out.innerHTML = '<div>Enter the date you filed to see how long the department has.</div>'; return; }
+    if (r.future) { out.innerHTML = '<div>That date is in the future. Use the date on your filing acknowledgement.</div>'; return; }
+    const left = r.days > 0 ? `${r.days} day${r.days === 1 ? '' : 's'} left` : r.days === 0 ? 'Today is the last day' : 'Passed: if no refund or intimation yet, raise a grievance';
+    out.innerHTML = `<div>E-verify by<b>${fmt(r.verify)}</b>30 days after filing</div><div>Processing due by<b class="${r.days < 0 ? 'late' : ''}">${fmt(r.process)}</b>${left}</div>`;
+  }
+  inp.addEventListener('input', render);
+  render();
+  window.__limits = limits;
+}
+</script>
+</body>
+</html>

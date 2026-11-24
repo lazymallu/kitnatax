@@ -13,7 +13,7 @@ let pass = 0, fail = 0; const ok = (c, m) => c ? pass++ : (fail++, console.log('
   ok(r.cess > 0 && r.cess < 0.1, 'cess sane');
   const idx = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   ok(idx.includes(`<h1>Salary tax calculator for India, ${cur}</h1>`), 'page title shows current tax year');
-  for (const page of ['index.html', 'guides/intimation-143-1.html', 'privacy.html', 'disclaimer.html']) {
+  for (const page of ['index.html', 'guides/intimation-143-1.html','guides/refund-not-received.html', 'privacy.html', 'disclaimer.html']) {
     const live = load(page, { today: '2026-11-24T10:00:00' }); await live.ready;
     ok(/Last checked/.test(live.d.getElementById('fresh').textContent) && !live.d.querySelector('.stale'), page + ': note shown, no warning while current');
     const old = load(page, { today: `${+r.validTo.slice(0, 4)}-04-01T09:00:00` }); await old.ready;

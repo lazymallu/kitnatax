@@ -3,7 +3,7 @@
 const chromium=require('@sparticuz/chromium'),pp=require('puppeteer-core'),fs=require('fs');
 const axe=fs.readFileSync(require.resolve('axe-core/axe.min.js'),'utf8');
 const B='http://127.0.0.1:8811/';
-const pages=['index.html','guides/intimation-143-1.html','privacy.html','disclaimer.html','404.html'];
+const pages=['index.html','guides/intimation-143-1.html','guides/refund-not-received.html','privacy.html','disclaimer.html','404.html'];
 const sizes=[[360,780,'phone'],[768,1024,'tablet'],[1280,900,'desktop']];
 (async()=>{
  const br=await pp.launch({executablePath:await chromium.executablePath(),args:[...chromium.args,'--no-proxy-server'],headless:true});

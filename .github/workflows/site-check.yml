@@ -26,6 +26,8 @@ jobs:
         run: cd test && node stress.js
       - name: Guide page tests
         run: node test/guide.js
+      - name: Refund guide tests
+        run: node test/refund-guide.js
       - name: Page stress test
         run: node test/ui.js
   watch:

@@ -16,7 +16,7 @@ fs.writeFileSync(path.join(root, 'rules/current.json'), JSON.stringify({ current
 // Pages: tax-year label, the age date, filing and revision deadlines move one year on.
 const bump = s => s.replaceAll(cur, next)
   .replace(/31 (March|July) (\d{4})/g, (m, mo, y) => `31 ${mo} ${+y + 1}`);
-const files = ['index.html', 'guides/intimation-143-1.html'];
+const files = ['index.html', 'guides/intimation-143-1.html', 'guides/refund-not-received.html'];
 for (const f of files) { const p = path.join(root, f); fs.writeFileSync(p, bump(fs.readFileSync(p, 'utf8'))); }
 console.log(`Created rules/${next}.json and moved page dates on by a year.
 Now: 1) update every number in rules/${next}.json that the Budget changed, 2) set "verified" to today,
